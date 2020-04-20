@@ -18,6 +18,7 @@
     </v-flex>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
     props: ['stock'],
     data() {
@@ -25,20 +26,20 @@ export default {
             quantity: 0,
         }
     },
-    methods:{
-        sellStock(){
-            const order = {
-                stockId: this.stock.id,
-                stockPrice: this.stock.price,
-                stockQuantity: this.quantity
+    methods: {
+            ...mapActions({ sellStockAction: 'sellStock' }),
+            sellStock() {
+                const order = {
+                    stockId: this.stock.id,
+                    stockPrice: this.stock.price,
+                    quantity: this.quantity
+                }
+                this.sellStockAction(order)
+                // this.$store.dispatch('sellStock', order)
+                this.quantity = 0
             }
-
-            this.$store.dispatch('sellStock', order)
-
-            this.quantity = 0
         }
     }
-}
 </script>
 <style lang="css">
     
