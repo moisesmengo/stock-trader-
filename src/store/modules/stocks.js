@@ -7,6 +7,9 @@ export default{
     mutations: {
         setStocks(state, stocks){
             state.stocks = stocks
+        },
+        randomizeStocks(state){
+
         }
     },
     actions:{
@@ -15,6 +18,9 @@ export default{
         },
         initStocks({commit}){
             commit('setStocks', stocks)
+        },
+        randomizeStocks({commit}){
+            commit('randomizeStocks')
         }
     }, 
     getters: {
